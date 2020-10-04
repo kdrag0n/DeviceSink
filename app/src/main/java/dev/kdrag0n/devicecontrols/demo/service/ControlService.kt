@@ -163,13 +163,16 @@ class ControlService : ControlsProviderService() {
             else -> throw IllegalArgumentException("Unsupported template type $templateType")
         }
 
+        val templateName = templateNames[templateType] ?: error("No name for template type")
+
         return Control.StatefulBuilder(name, pi)
             .setTitle(friendlyName)
             .setDeviceType(type)
             .setStatus(Control.STATUS_OK)
             .setStatusText(status)
             .setControlTemplate(template)
-            .setSubtitle(templateNames[templateType] ?: error("No name for template type"))
+            .setSubtitle(templateName)
+            .setZone(templateName)
             .build()
     }
 
