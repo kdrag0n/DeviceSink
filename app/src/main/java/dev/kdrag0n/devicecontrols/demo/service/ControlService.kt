@@ -173,6 +173,7 @@ class ControlService : ControlsProviderService() {
             .setControlTemplate(template)
             .setSubtitle(templateName)
             .setZone(templateName)
+            .setStructure("Kitchen Sink ${if (name.hashCode() % 2 == 0) "1" else "2"}")
             .build()
     }
 
