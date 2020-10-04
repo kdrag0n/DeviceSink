@@ -108,8 +108,10 @@ class ControlService : ControlsProviderService() {
 
     private val pi by lazy {
         PendingIntent.getActivity(
-            baseContext,0,
-            Intent(this, MainActivity::class.java),
+            baseContext,100,
+            Intent(baseContext, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            },
             PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
