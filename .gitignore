@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+*.apk
+app/release
+app/debug
