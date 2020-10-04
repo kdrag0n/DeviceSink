@@ -87,6 +87,15 @@ private val nameOverrides = mapOf(
     Pair("TV", "TV"),
 )
 
+private val templateNames = mapOf(
+    Pair(ControlTemplate::class, "Control"),
+    Pair(StatelessTemplate::class, "Stateless"),
+    Pair(ToggleTemplate::class, "Toggle"),
+    Pair(ToggleRangeTemplate::class, "Toggle + range"),
+    Pair(RangeTemplate::class, "Range"),
+    Pair(TemperatureControlTemplate::class, "Temperature"),
+)
+
 private const val TEMPERATURE_FLAG_ALL_MODES = TemperatureControlTemplate.FLAG_MODE_OFF or
         TemperatureControlTemplate.FLAG_MODE_HEAT or
         TemperatureControlTemplate.FLAG_MODE_COOL or
@@ -160,6 +169,7 @@ class ControlService : ControlsProviderService() {
             .setStatus(Control.STATUS_OK)
             .setStatusText(status)
             .setControlTemplate(template)
+            .setSubtitle(templateNames[templateType] ?: error("No name for template type"))
             .build()
     }
 
