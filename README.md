@@ -2,6 +2,8 @@
 
 This is a basic kitchen sink for the Android 11 [device controls](https://developer.android.com/guide/topics/ui/device-control) API. It creates a control for every possible device type for testing purposes.
 
+All controls have all information fields populated, including status, subtitle, structure, and zone.
+
 ## Device types
 
 All possible [DeviceTypes](https://developer.android.com/reference/android/service/controls/DeviceTypes) values are available:
