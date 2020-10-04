@@ -102,13 +102,15 @@ private const val TEMPERATURE_FLAG_ALL_MODES = TemperatureControlTemplate.FLAG_M
         TemperatureControlTemplate.FLAG_MODE_HEAT_COOL or
         TemperatureControlTemplate.FLAG_MODE_ECO
 
+private const val ACTIVITY_REQUEST_CODE = 100
+
 @RequiresApi(Build.VERSION_CODES.R)
 class ControlService : ControlsProviderService() {
     private lateinit var updatePublisher: ReplayProcessor<Control>
 
     private val pi by lazy {
         PendingIntent.getActivity(
-            baseContext,100,
+            baseContext, ACTIVITY_REQUEST_CODE,
             Intent(baseContext, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             },
