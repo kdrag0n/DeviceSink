@@ -13,7 +13,6 @@ import dev.kdrag0n.devicecontrols.demo.MainActivity
 import io.reactivex.Flowable
 import io.reactivex.processors.ReplayProcessor
 import org.reactivestreams.FlowAdapters
-import timber.log.Timber
 import java.util.*
 import java.util.concurrent.Flow
 import java.util.function.Consumer
@@ -189,12 +188,10 @@ class ControlService : ControlsProviderService() {
     }
 
     override fun createPublisherForAllAvailable(): Flow.Publisher<Control> {
-        Timber.i("create all pubs")
         return FlowAdapters.toFlowPublisher(Flowable.fromIterable(controls.values))
     }
 
     override fun createPublisherFor(controlIds: MutableList<String>): Flow.Publisher<Control> {
-        Timber.i("create pub for $controlIds")
         updatePublisher = ReplayProcessor.create()
 
         for (controlId in controlIds) {
